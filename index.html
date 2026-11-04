@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invitation de mariage</title>
+  <meta name="theme-color" content="#b5533c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+  <!-- Écran d'ouverture : l'enveloppe -->
+  <div class="intro" id="intro">
+    <p class="intro-top">Vous êtes invité(e)</p>
+    <div class="envelope" id="envelope">
+      <div class="env-card"><span id="cardNames"></span></div>
+      <div class="env-back"></div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="env-seal" id="seal"></div>
+    </div>
+    <button class="btn" id="openBtn" type="button">Ouvrir notre invitation</button>
+  </div>
+
+  <main id="site" aria-hidden="true">
+    <header class="hero" id="accueil">
+      <div class="hero-photo" id="heroPhoto"></div>
+      <div class="hero-content">
+        <p class="eyebrow reveal">Nous nous marions</p>
+        <h1 class="names reveal" id="names"></h1>
+        <p class="hero-date reveal" id="heroDate"></p>
+        <p class="hero-phrase reveal" id="heroPhrase"></p>
+        <div class="countdown reveal" id="countdown" aria-live="off"></div>
+      </div>
+      <span class="scroll-hint" aria-hidden="true">↓</span>
+    </header>
+
+    <section class="block" id="histoire">
+      <h2 class="title reveal"><small>Notre</small>histoire</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="block alt" id="programme">
+      <h2 class="title reveal"><small>Le</small>programme</h2>
+      <p class="sub reveal">Une seule journée, plusieurs moments.</p>
+      <ul class="program" id="program"></ul>
+    </section>
+
+    <section class="block" id="lieu">
+      <h2 class="title reveal"><small>Le</small>lieu</h2>
+      <div class="place reveal">
+        <h3 id="placeName"></h3>
+        <p id="placeAddr"></p>
+      </div>
+      <div class="map reveal"><iframe id="mapFrame" title="Carte du lieu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <a class="btn reveal" id="itineraire" target="_blank" rel="noopener">Ouvrir l'itinéraire</a>
+    </section>
+
+    <section class="block alt" id="tenue">
+      <h2 class="title reveal"><small>La</small>tenue</h2>
+      <p class="sub reveal" id="tenueText"></p>
+      <div class="swatches" id="swatches"></div>
+    </section>
+
+    <section class="block" id="rsvp">
+      <h2 class="title reveal"><small>Confirmez</small>votre présence</h2>
+      <p class="sub reveal" id="rsvpText"></p>
+      <a class="btn reveal" id="rsvpBtn" target="_blank" rel="noopener">Je serai là</a>
+    </section>
+
+    <footer class="footer">
+      <p class="reveal">Merci de faire partie de notre histoire.</p>
+      <p class="hashtag reveal" id="hashtag"></p>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
