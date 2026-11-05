@@ -54,7 +54,7 @@ window.INVITATION = {
     dateLimite: "10 février 2027",
     // {prenom1} et {prenom2} sont remplacés automatiquement par les prénoms des mariés.
     // L'invité écrit son nom à la fin du message avant de l'envoyer.
-    message: "Bonjour {prenom1} et {prenom2}, je confirme ma présence à votre mariage. Nom : "
+    message: "Bonjour DELYART, j'ai vu votre invitation de démonstration et je voudrais la même pour mon mariage. Mon nom : "
   },
 
   hashtag: "#AwaEtKoffi2027",
