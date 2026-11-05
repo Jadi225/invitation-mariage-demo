@@ -1,0 +1,4 @@
+Ajoute ici ta musique sous le nom musique.mp3
+- MP3 128 kbps, moins de 3 Mo, boucle de 1 à 2 minutes
+- Musique libre de droits à usage commercial uniquement (Pixabay Music, CC0)
+- Ne mets jamais un titre commercial dans le modèle vendu

@@ -7,7 +7,7 @@ window.INVITATION = {
   prenom2: "Koffi",
 
   // Date et heure de la cérémonie (format AAAA-MM-JJTHH:MM:SS)
-  dateISO: "2027-03-20T15:00:00",
+  dateISO: "2027-03-20T10:00:00",
   dateTexte: "Samedi 20 mars 2027",
   ville: "Abidjan, Côte d'Ivoire",
 
@@ -25,8 +25,10 @@ window.INVITATION = {
   programme: [
     { heure: "10h00", titre: "Accueil des invités", detail: "Installation et rafraîchissements" },
     { heure: "11h00", titre: "Cérémonie traditionnelle", detail: "Dot et bénédictions des familles" },
-    { heure: "15h00", titre: "Cérémonie civile", detail: "Échange des vœux" },
-    { heure: "18h00", titre: "Cocktail & dîner", detail: "Repas, musique et danse" }
+    { heure: "12h00", titre: "Repas", detail: "Déjeuner partagé avec les familles et les invités" },
+    { heure: "14h00", titre: "Cérémonie civile", detail: "Échange des vœux" },
+    { heure: "15h30", titre: "Photos, musique et danse", detail: "Place à la fête" },
+    { heure: "17h00", titre: "Fin de la journée", detail: "Remerciements et au revoir" }
   ],
 
   lieu: {
@@ -50,8 +52,14 @@ window.INVITATION = {
     // Numéro WhatsApp avec indicatif, sans + ni espaces (Côte d'Ivoire = 225)
     whatsapp: "2250757887372",
     dateLimite: "10 février 2027",
-    message: "Bonjour, je confirme ma présence au mariage. Nom : "
+    // {prenom1} et {prenom2} sont remplacés automatiquement par les prénoms des mariés.
+    // L'invité écrit son nom à la fin du message avant de l'envoyer.
+    message: "Bonjour {prenom1} et {prenom2}, je confirme ma présence à votre mariage. Nom : "
   },
 
-  hashtag: "#AwaEtKoffi2027"
+  hashtag: "#AwaEtKoffi2027",
+
+  // Musique de fond (mets ton fichier MP3 dans le dossier "audio").
+  // Mets activee: false pour la désactiver.
+  musique: { fichier: "audio/musique.mp3", volume: 0.5, activee: true }
 };

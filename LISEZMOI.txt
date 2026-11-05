@@ -1,0 +1,27 @@
+INVITATION DE MARIAGE — MODE D'EMPLOI
+=====================================
+
+1) PERSONNALISER
+   Ouvre config.js : prénoms, date, lieu, programme, couleurs, numéro WhatsApp.
+   Mets la photo du couple dans photos/couple.jpg (portrait, moins de 300 Ko).
+
+2) APERÇU DU LIEN SUR WHATSAPP
+   Quand on partage le lien, WhatsApp affiche un titre et une image.
+   - Dans index.html, modifie les lignes « og:title », « og:description »,
+     « og:url » et « og:image » (adresse COMPLÈTE : https://ton-site.vercel.app/...).
+   - Remplace photos/apercu.jpg par une image de 1200 x 630 px, moins de 300 Ko.
+   - WhatsApp garde l'ancien aperçu en mémoire : si tu changes l'image après coup,
+     partage le lien avec « ?v=2 » à la fin (puis v=3, etc.).
+
+3) LIEN POUR UN INVITÉ PRÉCIS
+   Ajoute ?invite=Nom à la fin du lien. Exemple :
+   https://ton-site.vercel.app/?invite=Mme-Kouassi
+   Le nom s'affiche au-dessus de l'enveloppe et dans le message de confirmation.
+
+4) MODE LÉGER (vieux téléphones)
+   Le site passe tout seul en mode léger si le téléphone est lent
+   (pas d'enveloppe animée, le site s'affiche directement).
+   Pour le forcer : ajoute ?lite=1 au lien. Pour l'interdire : ?lite=0.
+
+5) MUSIQUE
+   Mets musique.mp3 dans le dossier audio (musique libre de droits uniquement).

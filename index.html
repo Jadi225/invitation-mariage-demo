@@ -2,82 +2,125 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Invitation de mariage</title>
-  <meta name="theme-color" content="#b5533c">
+  <meta name="description" content="Samedi 20 mars 2027 · Abidjan. Ouvrez l'enveloppe et confirmez votre présence.">
+  <meta name="theme-color" content="#2a1714">
+
+  <!-- ===== APERÇU DU LIEN (WhatsApp, Facebook, SMS) =====
+       Modifie ces lignes pour chaque couple. L'adresse de l'image doit être COMPLÈTE (https://...). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Invitation de mariage">
+  <meta property="og:title" content="Awa &amp; Koffi vous invitent à leur mariage">
+  <meta property="og:description" content="Samedi 20 mars 2027 · Abidjan. Ouvrez l'enveloppe et confirmez votre présence.">
+  <meta property="og:url" content="https://TON-SITE.vercel.app/">
+  <meta property="og:image" content="https://TON-SITE.vercel.app/photos/apercu.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Enveloppe d'invitation de mariage">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="locked">
+<body>
 
-  <!-- Écran d'ouverture : l'enveloppe -->
-  <div class="intro" id="intro">
-    <p class="intro-top">Vous êtes invité(e)</p>
-    <div class="envelope" id="envelope">
-      <div class="env-card"><span id="cardNames"></span></div>
-      <div class="env-back"></div>
-      <div class="env-front"></div>
-      <div class="env-flap"></div>
-      <div class="env-seal" id="seal"></div>
+  <button class="skip" id="skip" type="button">Passer l'animation</button>
+
+  <!-- ===== Écran d'ouverture : l'enveloppe flotte et suit le curseur ===== -->
+  <div class="scene" id="scene">
+    <div class="zoom" id="zoom">
+      <p class="guest" id="guestName" hidden></p>
+      <p class="eyebrow light">Vous êtes invité(e)</p>
+
+      <div class="float">
+        <div class="hand" id="hand">
+          <div class="env-back"></div>
+          <div class="env-card" id="envCard">
+            <span class="c-small">Mariage</span>
+            <span class="c-names" id="cardNames"></span>
+            <span class="c-date" id="cardDate"></span>
+          </div>
+          <div class="env-front"><i class="shine"></i></div>
+          <div class="env-flap" id="envFlap">
+            <div class="flap-out"><i class="shine"></i></div>
+            <div class="flap-in"></div>
+          </div>
+          <div class="env-seal" id="seal"></div>
+        </div>
+      </div>
+      <div class="shadow" id="shadow"></div>
+
+      <div class="hint" id="hint">
+        <span class="h-mouse">Faites défiler pour ouvrir l'enveloppe</span>
+        <span class="h-touch">Faites glisser vers le haut pour ouvrir</span>
+        <span class="arrow" aria-hidden="true">&#8595;</span>
+      </div>
     </div>
-    <button class="btn" id="openBtn" type="button">Ouvrir notre invitation</button>
   </div>
 
-  <main id="site" aria-hidden="true">
-    <header class="hero" id="accueil">
-      <div class="hero-photo" id="heroPhoto"></div>
-      <div class="hero-content">
-        <p class="eyebrow reveal">Nous nous marions</p>
-        <h1 class="names reveal" id="names"></h1>
-        <p class="hero-date reveal" id="heroDate"></p>
-        <p class="hero-phrase reveal" id="heroPhrase"></p>
-        <div class="countdown reveal" id="countdown" aria-live="off"></div>
-      </div>
-      <span class="scroll-hint" aria-hidden="true">↓</span>
-    </header>
+  <!-- ===== Le site : un grand papier qui se déplie en défilant ===== -->
+  <main class="site" id="site" inert>
+    <div class="gap" id="gap" aria-hidden="true"></div>
+    <div class="paper" id="paper">
+      <i class="sheen" aria-hidden="true"></i>
 
-    <section class="block" id="histoire">
-      <h2 class="title reveal"><small>Notre</small>histoire</h2>
-      <div class="timeline" id="timeline"></div>
-    </section>
+      <header class="hero" id="accueil">
+        <div class="hero-photo" id="heroPhoto"></div>
+        <div class="hero-in">
+          <p class="eyebrow light">Nous nous marions</p>
+          <h1 class="names" id="names"></h1>
+          <p class="date" id="heroDate"></p>
+          <p class="phrase" id="heroPhrase"></p>
+          <div class="countdown" id="countdown" role="timer" aria-live="off" aria-label="Compte à rebours avant le mariage"></div>
+        </div>
+        <span class="scroll-hint" aria-hidden="true">&#8595;</span>
+      </header>
 
-    <section class="block alt" id="programme">
-      <h2 class="title reveal"><small>Le</small>programme</h2>
-      <p class="sub reveal">Une seule journée, plusieurs moments.</p>
-      <ul class="program" id="program"></ul>
-    </section>
+      <section class="sec" id="histoire">
+        <h2 class="title"><small>Notre</small>histoire</h2>
+        <div class="timeline" id="timeline"></div>
+      </section>
 
-    <section class="block" id="lieu">
-      <h2 class="title reveal"><small>Le</small>lieu</h2>
-      <div class="place reveal">
-        <h3 id="placeName"></h3>
-        <p id="placeAddr"></p>
-      </div>
-      <div class="map reveal"><iframe id="mapFrame" title="Carte du lieu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-      <a class="btn reveal" id="itineraire" target="_blank" rel="noopener">Ouvrir l'itinéraire</a>
-    </section>
+      <section class="sec alt" id="programme">
+        <h2 class="title"><small>Le</small>programme</h2>
+        <p class="sub">Une seule journée, plusieurs moments.</p>
+        <ul class="program" id="program"></ul>
+      </section>
 
-    <section class="block alt" id="tenue">
-      <h2 class="title reveal"><small>La</small>tenue</h2>
-      <p class="sub reveal" id="tenueText"></p>
-      <div class="swatches" id="swatches"></div>
-    </section>
+      <section class="sec" id="lieu">
+        <h2 class="title"><small>Le</small>lieu</h2>
+        <div class="place">
+          <h3 id="placeName"></h3>
+          <p id="placeAddr"></p>
+        </div>
+        <div class="map"><iframe id="mapFrame" title="Carte du lieu" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <a class="btn" id="itineraire" target="_blank" rel="noopener">Ouvrir l'itinéraire</a>
+      </section>
 
-    <section class="block" id="rsvp">
-      <h2 class="title reveal"><small>Confirmez</small>votre présence</h2>
-      <p class="sub reveal" id="rsvpText"></p>
-      <a class="btn reveal" id="rsvpBtn" target="_blank" rel="noopener">Je serai là</a>
-    </section>
+      <section class="sec alt" id="tenue">
+        <h2 class="title"><small>La</small>tenue</h2>
+        <p class="sub" id="tenueText"></p>
+        <div class="swatches" id="swatches"></div>
+      </section>
 
-    <footer class="footer">
-      <p class="reveal">Merci de faire partie de notre histoire.</p>
-      <p class="hashtag reveal" id="hashtag"></p>
-    </footer>
+      <section class="sec alt" id="rsvp">
+        <h2 class="title"><small>Confirmez</small>votre présence</h2>
+        <p class="sub" id="rsvpText"></p>
+        <a class="btn" id="rsvpBtn" target="_blank" rel="noopener">Je serai là</a>
+      </section>
+
+      <footer class="footer">
+        <p>Merci de faire partie de notre histoire.</p>
+        <p class="hashtag" id="hashtag"></p>
+      </footer>
+    </div>
   </main>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="music.js"></script>
 </body>
 </html>

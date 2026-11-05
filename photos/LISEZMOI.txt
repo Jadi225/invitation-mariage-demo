@@ -1,1 +1,3 @@
-Ajoute ta photo ici sous le nom couple.jpg
+couple.jpg  : la photo du couple, en portrait, moins de 300 Ko.
+apercu.jpg  : l'image qui s'affiche quand on partage le lien sur WhatsApp (1200 x 630 px, moins de 300 Ko).
+              L'image fournie est un exemple neutre : remplace-la par la tienne.
